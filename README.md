@@ -67,6 +67,29 @@ maximum expert share is 0.25 with and without it, and no-aux MSE is 0.0015,
 better than 0.0303 with the penalty. This does not test the penalty's value
 under imbalanced traffic.
 
+## Expert labels, router shifts and ties
+
+Four tests in `tests/test_expert_labels.py` check when expert labels can change
+without changing predictions or online SGD. All 24 expert permutations are
+checked on each of the three saved models and all 340 original rows: 24,480
+comparisons, with a separated largest gate probability at every point. Both
+sparse and soft predictions agree after matched expert/router relabeling.
+
+Generated controls check 480 matched SGD updates with and without the
+per-example auxiliary loss. Another 288 updates add the same affine function
+to every router logit; gates stay the same, router row sums stay fixed, and the
+common shift remains after each update. These finite consistency checks do not
+replace the existing finite-difference checks or establish a training gain.
+
+Ties are outside the sparse relabeling premise. The implementation selects the
+lowest index of a maximal **rounded gate probability**. With two equal gates
+and different expert outputs, relabeling changes the sparse prediction while
+the soft sum stays equal. Even unequal logits can round to equal probabilities;
+a subnormal-gap control records that distinction. No raw-logit tie policy,
+trainer, fixture, exact-routing geometry or browser behavior is changed.
+The full Python suite now has 76 tests; all earlier 72 remain, alongside the
+same 14 substantive Node/actual-Chrome tests.
+
 ## CLI
 
 ```bash
@@ -83,7 +106,7 @@ python -m unittest discover -s tests
 bash examples/demo.sh
 ```
 
-72 Python tests, plus 14 substantive Node/Chrome tests for the route, capacity and gate-regret inspectors. No Python runtime dependencies beyond Python 3.10+.
+76 Python tests, plus 14 substantive Node/Chrome tests for the route, capacity and gate-regret inspectors. No Python runtime dependencies beyond Python 3.10+.
 
 ## Limitations
 

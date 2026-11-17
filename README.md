@@ -1,10 +1,10 @@
-# MoeLab
+# Mixture of experts
 
 A small mixture-of-experts model written in pure Python. A linear router chooses one linear expert and keeps its gate probability in the prediction. Training uses hand-derived gradients, checked by finite differences, and a trained dense baseline on synthetic regime-switching data. No ML frameworks.
 
 ## v0.4: one table, worst regret
 
-[Open the gate-table regret inspector](https://midya8.github.io/moelab/gate.html) · [Exact objective, schema, sources and limits](GATE-REGRET.md)
+[Open the gate-table regret inspector](https://midya8.github.io/mixture-of-experts/gate.html) · [Exact objective, schema, sources and limits](GATE-REGRET.md)
 
 Freeze a nominally optimal capacity dispatch. Supply explicit lower and upper probability bounds, then find the largest gate-mass gap against another maximum-coverage dispatch on one normalized table. The report includes the attaining table and challenger, every row primal/dual witness, all capacity states and tied challenger counts. A separate bound keeps both independently optimized tables visible instead of pretending they jointly attain regret.
 
@@ -20,7 +20,7 @@ These are assumed gate bounds, not learned uncertainty or an input/weight attack
 
 ## v0.3: the batch decides
 
-[Open the exact capacity inspector](https://midya8.github.io/moelab/capacity.html) · [Proof, complete schema, sources and limits](CAPACITY.md)
+[Open the exact capacity inspector](https://midya8.github.io/mixture-of-experts/capacity.html) · [Proof, complete schema, sources and limits](CAPACITY.md)
 
 A separate exact-rational capacity allocator retains every optimal dispatch, complete capacity-state witnesses, assignment counts and all eligibility bottlenecks. The objective is explicit: first dispatch as many tokens as possible, then retain the greatest sum of original gate probabilities. Four full-strength greedy controls share the same capacities and eligibility.
 
@@ -119,7 +119,7 @@ MIT
 
 ## v0.2: follow the routing seam
 
-[Open the interactive route inspector](https://midya8.github.io/moelab/) · [Equations, schema, sources and limits](ROUTES.md)
+[Open the interactive route inspector](https://midya8.github.io/mixture-of-experts/) · [Equations, schema, sources and limits](ROUTES.md)
 
 Choose any pair of the original 240 training examples and follow the frozen model through input space. Exact rational affine geometry finds every cell and point tie, including nonwinning crossings, persistent identical winners, endpoint ties and intervals too thin for the display grid. Inspect retained-probability sparse outputs, both one-sided limits, point values, signed jumps and analytic branch derivatives. Original binary64 inference and mathematical geometry remain separate; disagreement is exposed rather than hidden.
 

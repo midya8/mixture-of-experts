@@ -1,6 +1,6 @@
 # Capacity is a batch decision
 
-MoeLab v0.3 adds exact finite capacity dispatch without changing the original trainer, checkpoints, data, route-seam engine or evaluation results. The [interactive inspector](https://midya8.github.io/moelab/capacity.html) has its own BigInt engine. A native dynamic program constructs certificates; an independent exhaustive Cartesian-product implementation checks every leaf, including every capacity-state edge, all optimum counts, the full optimal-family marginals and attained scalar-error extrema.
+Mixture of experts v0.3 adds exact finite capacity dispatch without changing the original trainer, checkpoints, data, route-seam engine or evaluation results. The [interactive inspector](https://midya8.github.io/mixture-of-experts/capacity.html) has its own BigInt engine. A native dynamic program constructs certificates; an independent exhaustive Cartesian-product implementation checks every leaf, including every capacity-state edge, all optimum counts, the full optimal-family marginals and attained scalar-error extrema.
 
 This is an educational optimization audit of supplied rational gate tables, not a new MoE router, an implementation of Switch/BASE/Expert Choice, a production allocator, a training result or a throughput claim.
 

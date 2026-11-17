@@ -22,7 +22,7 @@ node --test tests/test_gate.cjs tests/test_gate_browser.cjs
 ```
 
 Open `docs/gate.html` directly in a modern browser, or use the
-[hosted inspector](https://midya8.github.io/moelab/gate.html). All computation is
+[hosted inspector](https://midya8.github.io/mixture-of-experts/gate.html). All computation is
 local. Input and full report downloads replay through the native verifier.
 A successful verification establishes consistency with the given input, not
 authorship, calibration or provenance.
